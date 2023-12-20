@@ -1,0 +1,21 @@
+version: "2"
+cloud:
+  # organization: ""
+  project: "01HHW43Y5AZX33MB9G9H1CZQ5B"
+  # hostname: ""
+sql:
+  - engine: "postgresql"
+    queries: "./db/queries/"
+    schema: "./db/migration/"
+    database:
+      managed: true
+    gen:
+      go:
+        package: "db"
+        out: "./db/sqlc/"
+        # sql_package: "pgx/v5"
+        emit_json_tags: true
+        emit_exact_table_names: false
+plugins: []
+rules: []
+options: {}

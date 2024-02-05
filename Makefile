@@ -1,3 +1,6 @@
+reset:
+	make droppostgres && make postgres
+
 postgres:
 	docker run --name some-postgress -e POSTGRES_PASSWORD=secretpassword -e POSTGRES_USER=root -d -p 5432:5432 postgres
 
@@ -13,8 +16,14 @@ dropdb:
 migrateup:
 	migrate -path db/migration -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose up
 
+migrateup1:
+	migrate -path db/migration -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose up 1
+
 migratedown:
 	migrate -path db/migration -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose down
+
+migratedown1:
+	migrate -path db/migration -database "postgresql://root:secretpassword@localhost:5432/simple_bank?sslmode=disable" -verbose down 1
 
 sqlc:
 	sqlc generate
@@ -25,4 +34,7 @@ test:
 server:
 	go run main.go
 
-.PHONY: postgres dropdb createdb migrateup migratedown sqlc test server
+mock:
+	mockgen --package mockdb --destination db/mock/store.go github.com/igmrrf/simplebank/db/sqlc Store
+
+.PHONY: postgres dropdb createdb migrateup migratedown sqlc test server mock reset

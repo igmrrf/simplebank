@@ -1,0 +1,37 @@
+{
+  "transfer": {
+    "id": 171,
+    "to_account_id": 131,
+    "from_account_id": 141,
+    "amount": 10,
+    "created_at": "2023-12-21T16:03:20.868692Z"
+  },
+  "from_account": {
+    "id": 141,
+    "owner": "Francis",
+    "balance": -10,
+    "currency": "USD",
+    "created_at": "2023-12-21T15:54:54.000314Z",
+    "country_code": 534
+  },
+  "to_account": {
+    "id": 131,
+    "owner": "nswvcl",
+    "balance": 206,
+    "currency": "USD",
+    "created_at": "2023-12-19T23:24:50.25003Z",
+    "country_code": 794
+  },
+  "from_entry": {
+    "id": 341,
+    "account_id": 141,
+    "amount": -10,
+    "created_at": "2023-12-21T16:03:20.868692Z"
+  },
+  "to_entry": {
+    "id": 342,
+    "account_id": 131,
+    "amount": 10,
+    "created_at": "2023-12-21T16:03:20.868692Z"
+  }
+}
